@@ -7,19 +7,28 @@
     <meta name="referrer" content="no-referrer">
     <title>NAH.SH - Fahrplanauskunft</title>
     <style>
+        @font-face {
+            font-family: 'Avenir';
+            src: url('https://fonts.googleapis.com/css2?family=Avenir:wght@700;600;500&display=swap');
+        }
+
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
+            font-family: 'Avenir', sans-serif;
+            background-color: #F4F4F4;
+            color: #4A5C66; /* Pantone 533 */
         }
 
         header {
-            background-color: #002147;
+            background-color: #006F6A; /* Pantone 320 */
             color: white;
-            padding: 10px 20px;
+            padding: 15px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         header img {
@@ -34,19 +43,19 @@
         nav a {
             color: white;
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 600;
         }
 
         .hero {
             background: url('https://via.placeholder.com/1920x300') no-repeat center center/cover;
             color: white;
             text-align: center;
-            padding: 60px 20px;
+            padding: 80px 20px;
         }
 
         .hero h1 {
             font-size: 2rem;
-            margin: 0;
+            font-weight: 700;
         }
 
         .container {
@@ -56,36 +65,22 @@
         }
 
         .streckenfinder {
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         .footer {
-            background-color: #002147;
+            background-color: #4A5C66; /* Pantone 533 */
             color: white;
             text-align: center;
             padding: 10px;
-            margin-top: 20px;
-        }
-
-        .welcome-message {
-            text-align: center;
-            font-size: 20px;
-            margin: 20px 0;
-        }
-
-        .logout-btn {
-            background-color: #007bff;
-            color: white;
-            padding: 10px 15px;
-            cursor: pointer;
-            border: none;
+            margin-top: 40px;
         }
 
         /* Responsive Styles */
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
             header {
                 flex-direction: column;
                 text-align: center;
@@ -93,8 +88,8 @@
 
             nav {
                 flex-direction: column;
-                gap: 10px;
                 align-items: center;
+                gap: 10px;
             }
 
             .hero h1 {
@@ -106,6 +101,16 @@
             }
 
             .streckenfinder {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.2rem;
+            }
+
+            .streckenfinder {
                 padding: 15px;
             }
         }
@@ -113,54 +118,29 @@
 </head>
 <body>
     <header>
-        <img src="nahsh-logo.svg" alt="NAH.SH Logo">
+        <img src="https://via.placeholder.com/150x50?text=NAH.SH" alt="NAH.SH Logo">
         <nav>
             <a href="#themen">Themen</a>
             <a href="#fahrplan">Fahrplan</a>
             <a href="#karten">Karten</a>
             <a href="#service">Service</a>
-            <a href="#nahsh">NAH.SH</a>
+            <a href="login.html">Login</a>
         </nav>
     </header>
 
     <div class="hero">
-        <h1>Die NAH.SH Fahrplanauskunft</h1>
+        <h1>Willkommen bei der NAH.SH Fahrplanauskunft</h1>
     </div>
 
     <div class="container">
-        <!-- Willkommensnachricht für eingeloggte Benutzer -->
-        <div id="welcome-message" class="welcome-message" style="display: none;">
-            <p>Willkommen, <span id="user-name"></span>!</p>
-            <button class="logout-btn" onclick="logout()">Abmelden</button>
-        </div>
-
-        <!-- Streckenfinder -->
         <section class="streckenfinder">
             <h2>Finde deine Strecke:</h2>
-            <div data-hfs-widget="true" 
-                 data-hfs-widget-cfg-colorscheme="light" 
-                 data-hfs-widget-tp="true" 
-                 data-hfs-widget-tp-autosearch="true"></div>
+            <div data-hfs-widget="true" data-hfs-widget-cfg-colorscheme="light" data-hfs-widget-tp="true" data-hfs-widget-tp-autosearch="true"></div>
         </section>
     </div>
 
     <footer class="footer">
         &copy; 2024 NAH.SH | Impressum | Datenschutz
     </footer>
-
-    <script>
-        window.onload = function() {
-            const loggedInUser = localStorage.getItem("loggedInUser");
-            if (loggedInUser) {
-                document.getElementById("welcome-message").style.display = "block";
-                document.getElementById("user-name").textContent = loggedInUser;
-            }
-        };
-
-        function logout() {
-            localStorage.removeItem("loggedInUser");
-            window.location.href = "login.html"; // Weiterleitung zur Login-Seite
-        }
-    </script>
 </body>
 </html>
