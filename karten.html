@@ -3,241 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-    <meta name="referrer" content="no-referrer">
-    <title>NAH.SH - Shop</title>
+    <title>NAH.SH - Ticket-Shop</title>
     <style>
-        @font-face {
-            font-family: 'Avenir';
-            src: url('https://fonts.googleapis.com/css2?family=Avenir:wght@700;600;500&display=swap');
-        }
-
         body {
-            margin: 0;
             font-family: 'Avenir', sans-serif;
-            background-color: #F4F4F4;
-            color: #4A5C66; /* Pantone 533 */
+            margin: 0;
+            padding: 0;
+            background-color: #EFF2F7;
         }
-
         header {
-            background-color: #006F6A; /* Pantone 320 */
+            background-color: #003B5C; /* Pantone 533 */
             color: white;
-            padding: 15px 20px;
+            padding: 10px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
         }
-
-        header img {
-            max-height: 50px;
-        }
-
-        nav {
-            display: flex;
-            gap: 15px;
-        }
-
-        nav a {
+        header a {
             color: white;
             text-decoration: none;
-            font-weight: 600;
+            margin-left: 20px;
         }
-
-        .hero {
-            background: url('https://via.placeholder.com/1920x300') no-repeat center center/cover;
-            color: white;
-            text-align: center;
-            padding: 80px 20px;
+        header a:hover {
+            text-decoration: underline;
         }
-
-        .hero h1 {
-            font-size: 2rem;
-            font-weight: 700;
-        }
-
         .container {
-            max-width: 1200px;
+            max-width: 900px;
             margin: 20px auto;
             padding: 20px;
-        }
-
-        .product {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-color: white;
-            padding: 30px;
+            background: white;
             border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            margin-bottom: 40px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-
-        .product img {
-            max-width: 200px;
-            margin-bottom: 20px;
-        }
-
-        .product h2 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #006F6A; /* Pantone 320 */
-            margin-bottom: 10px;
-        }
-
-        .product p {
-            font-size: 1.2rem;
-            color: #4A5C66; /* Pantone 533 */
-            margin-bottom: 20px;
+        h1 {
+            color: #003B5C;
             text-align: center;
         }
-
-        .product .price {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #006F6A; /* Pantone 320 */
-            margin-bottom: 20px;
-        }
-
-        .product button {
-            padding: 10px 20px;
-            background-color: #006F6A; /* Pantone 320 */
-            color: white;
-            font-size: 1.2rem;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .product button:hover {
-            background-color: #005c56;
-        }
-
-        .footer {
-            background-color: #4A5C66; /* Pantone 533 */
-            color: white;
-            text-align: center;
+        .ticket {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #EFF2F7;
             padding: 10px;
-            margin-top: 40px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #CCC;
         }
-
-        @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            nav {
-                flex-direction: column;
-                align-items: center;
-                gap: 10px;
-            }
-
-            .hero h1 {
-                font-size: 1.5rem;
-            }
-
-            .container {
-                padding: 10px;
-            }
-
-            .product {
-                padding: 20px;
-            }
+        .ticket button {
+            background-color: #00778B; /* Pantone 320 */
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'Avenir', sans-serif;
         }
-
-        @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 1.2rem;
-            }
-
-            .product {
-                padding: 15px;
-            }
-
-            .product h2 {
-                font-size: 1.5rem;
-            }
-
-            .product p {
-                font-size: 1rem;
-            }
+        .ticket button:hover {
+            background-color: #005F6D;
         }
     </style>
 </head>
 <body>
     <header>
-        <img src="https://via.placeholder.com/150x50?text=NAH.SH" alt="NAH.SH Logo">
-        <nav>
-            <a href="#themen">Themen</a>
-            <a href="#fahrplan">Fahrplan</a>
-            <a href="#karten">Karten</a>
-            <a href="#service">Service</a>
-            <a href="login.html">Login</a>
-        </nav>
+        <h1>NAH.SH Ticket-Shop</h1>
+        <a href="index.html">Zurück zur Startseite</a>
     </header>
-
-    <div class="hero">
-        <h1>Shop - Fahrkarten kaufen</h1>
-    </div>
-
     <div class="container">
-        <!-- Fahrkarte Kind -->
-        <section class="product">
-            <img src="https://via.placeholder.com/200" alt="Fahrkarte Kind">
-            <h2>Fahrkarte Kind</h2>
-            <p>Mit dieser Fahrkarte können Kinder den Nahverkehr günstig nutzen.</p>
-            <div class="price">1,50 €</div>
-            <button onclick="addToCart('Fahrkarte Kind')">In den Warenkorb</button>
-        </section>
+        <h1>Wähle dein Ticket</h1>
 
-        <!-- Tageskarte -->
-        <section class="product">
-            <img src="https://via.placeholder.com/200" alt="Tageskarte">
-            <h2>Tageskarte</h2>
-            <p>Nutze den Nahverkehr für einen ganzen Tag. Ideal für Reisende.</p>
-            <div class="price">6,50 €</div>
-            <button onclick="addToCart('Tageskarte')">In den Warenkorb</button>
-        </section>
+        <!-- Ticket: Kinderkarte -->
+        <div class="ticket">
+            <span>Kinderkarte (1,50€)</span>
+            <button onclick="downloadTicket('Kinderticket698346509802.pdf')">Jetzt kaufen</button>
+        </div>
 
-        <!-- Deutschlandticket -->
-        <section class="product">
-            <img src="https://via.placeholder.com/200" alt="Deutschlandticket">
-            <h2>Deutschlandticket</h2>
-            <p>Für 49 € deutschlandweit den Nahverkehr nutzen – unbegrenzt reisen!</p>
-            <div class="price">49,00 €</div>
-            <button onclick="addToCart('Deutschlandticket')">In den Warenkorb</button>
-        </section>
+        <!-- Ticket: Tageskarte -->
+        <div class="ticket">
+            <span>Tageskarte (6,00€)</span>
+            <button onclick="downloadTicket('Tageskarte698346509803.pdf')">Jetzt kaufen</button>
+        </div>
 
-        <!-- Quer-durchs-Land-Ticket -->
-        <section class="product">
-            <img src="https://via.placeholder.com/200" alt="Quer-durchs-Land-Ticket">
-            <h2>Quer-durchs-Land-Ticket</h2>
-            <p>Ideal für Gruppenreisen oder Einzelpersonen, deutschlandweit gültig.</p>
-            <div class="price">42,00 €</div>
-            <button onclick="addToCart('Quer-durchs-Land-Ticket')">In den Warenkorb</button>
-        </section>
+        <!-- Ticket: Deutschlandticket -->
+        <div class="ticket">
+            <span>Deutschlandticket (49,00€)</span>
+            <button onclick="downloadTicket('Deutschlandticket698346509804.pdf')">Jetzt kaufen</button>
+        </div>
 
-        <!-- Wochenendticket -->
-        <section class="product">
-            <img src="https://via.placeholder.com/200" alt="Wochenendticket">
-            <h2>Wochenendticket</h2>
-            <p>Reise flexibel am Wochenende durch Deutschland mit dem Nahverkehr.</p>
-            <div class="price">44,00 €</div>
-            <button onclick="addToCart('Wochenendticket')">In den Warenkorb</button>
-        </section>
+        <!-- Ticket: Quer-durchs-Land-Ticket -->
+        <div class="ticket">
+            <span>Quer-durchs-Land-Ticket (25,00€)</span>
+            <button onclick="downloadTicket('Quer-durchs-Land-Ticket698346509805.pdf')">Jetzt kaufen</button>
+        </div>
+
+        <!-- Ticket: Wochenendticket -->
+        <div class="ticket">
+            <span>Wochenendticket (20,00€)</span>
+            <button onclick="downloadTicket('Wochenendticket698346509806.pdf')">Jetzt kaufen</button>
+        </div>
     </div>
-
-    <footer class="footer">
-        &copy; 2024 NAH.SH | Impressum | Datenschutz
-    </footer>
 
     <script>
-        function addToCart(ticket) {
-            alert(ticket + " wurde in den Warenkorb gelegt.");
+        function downloadTicket(ticketFile) {
+            const link = document.createElement('a');
+            link.href = ticketFile;
+            link.download = ticketFile;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         }
     </script>
 </body>
