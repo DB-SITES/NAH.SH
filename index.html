@@ -1,137 +1,142 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-    <meta name="referrer" content="no-referrer">
-    <title>NAH.SH - Fahrplanauskunft</title>
+    <title>Newsletter, Login und Registrierung</title>
     <style>
         body {
-            margin: 0;
             font-family: Arial, sans-serif;
-        }
-
-        header {
-            background-color: #002147;
-            color: white;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        header img {
-            max-height: 50px;
-        }
-
-        nav {
-            display: flex;
-            gap: 15px;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .hero {
-            background: url('https://via.placeholder.com/1920x300') no-repeat center center/cover;
-            color: white;
-            text-align: center;
-            padding: 60px 20px;
-        }
-
-        .hero h1 {
-            font-size: 2rem;
+            background-color: #f4f4f9;
             margin: 0;
+            padding: 20px;
         }
-
         .container {
-            max-width: 1200px;
-            margin: 20px auto;
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
             padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-
-        .streckenfinder {
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .footer {
-            background-color: #002147;
-            color: white;
+        h2 {
             text-align: center;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        .form-group input {
+            width: 100%;
             padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .form-container {
             margin-top: 20px;
         }
-
-        /* Brevo Newsletter Form Styles */
-        @font-face {
-            font-display: block;
-            font-family: Roboto;
-            src: url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/7529907e9eaf8ebb5220c5f9850e3811.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/25c678feafdc175a70922a116c9be3e7.woff) format("woff");
+        .form-container form {
+            margin-bottom: 20px;
         }
-
-        .sib-form {
+        .switch {
             text-align: center;
-            background-color: #EFF2F7;
-            padding: 20px;
-            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .switch a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .switch a:hover {
+            text-decoration: underline;
         }
     </style>
-    <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
 </head>
 <body>
-    <header>
-        <img src="https://via.placeholder.com/150x50?text=NAH.SH" alt="NAH.SH Logo">
-        <nav>
-            <a href="#themen">Themen</a>
-            <a href="#fahrplan">Fahrplan</a>
-            <a href="#karten">Karten</a>
-            <a href="#service">Service</a>
-            <a href="#nahsh">NAH.SH</a>
-        </nav>
-    </header>
-
-    <div class="hero">
-        <h1>Die NAH.SH Fahrplanauskunft</h1>
-    </div>
-
     <div class="container">
-        <section class="streckenfinder">
-            <h2>Finde deine Strecke:</h2>
-            <div data-hfs-widget="true" 
-                 data-hfs-widget-cfg-colorscheme="light" 
-                 data-hfs-widget-tp="true" 
-                 data-hfs-widget-tp-autosearch="true"></div>
-        </section>
+        <h2>Newsletter Anmeldung</h2>
+        <div class="form-container" id="newsletter-form">
+            <form>
+                <div class="form-group">
+                    <label for="newsletter-email">E-Mail-Adresse</label>
+                    <input type="email" id="newsletter-email" placeholder="E-Mail-Adresse eingeben" required>
+                </div>
+                <button type="submit">Newsletter abonnieren</button>
+            </form>
+        </div>
 
-        <!-- Brevo Newsletter Form -->
-        <div class="sib-form">
-            <div id="sib-form-container">
-                <form id="sib-form" method="POST" action="https://eee3d9d7.sibforms.com/serve/MUIFAJBp4mvAhfwnOrntf7EWltNQtM-PLM_24uLtFSDJEO2qK58L3yVNlMDMFxJMo0ZzCksCQXatlUYU4KQmz1E5hbY9XB8gM06RXRk5_-Xog3_GgB8qEnAeiZIfUNAXJdHCtGO3PdNczGkaqRwLZGqRQ_wPTNeBw-XlCcfQNXCEtJ0KNgCaur18uw7ozayGJnU6uIC_M_IeXgJI" data-type="subscription">
-                    <h2>Newsletter</h2>
-                    <p>Subscribe to our newsletter and stay updated.</p>
-                    <label for="EMAIL">E-Mail-Adresse</label>
-                    <input type="email" id="EMAIL" name="EMAIL" placeholder="E-Mail eingeben" required>
-                    <label>
-                        <input type="checkbox" id="OPT_IN" name="OPT_IN">
-                        Ich bin kein Roboter
-                    </label>
-                    <button type="submit">Abonnieren</button>
-                </form>
+        <h2 id="form-title">Login</h2>
+        <div class="form-container" id="login-form">
+            <form>
+                <div class="form-group">
+                    <label for="login-email">E-Mail-Adresse</label>
+                    <input type="email" id="login-email" placeholder="E-Mail-Adresse eingeben" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Passwort</label>
+                    <input type="password" id="login-password" placeholder="Passwort eingeben" required>
+                </div>
+                <button type="submit">Einloggen</button>
+            </form>
+            <div class="switch">
+                <p>Kein Konto? <a href="#" onclick="switchToRegistration()">Registrieren</a></p>
+            </div>
+        </div>
+
+        <div class="form-container" id="registration-form" style="display: none;">
+            <form>
+                <div class="form-group">
+                    <label for="register-email">E-Mail-Adresse</label>
+                    <input type="email" id="register-email" placeholder="E-Mail-Adresse eingeben" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-password">Passwort</label>
+                    <input type="password" id="register-password" placeholder="Passwort erstellen" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-password-confirm">Passwort bestätigen</label>
+                    <input type="password" id="register-password-confirm" placeholder="Passwort bestätigen" required>
+                </div>
+                <button type="submit">Registrieren</button>
+            </form>
+            <div class="switch">
+                <p>Bereits ein Konto? <a href="#" onclick="switchToLogin()">Einloggen</a></p>
             </div>
         </div>
     </div>
 
-    <footer class="footer">
-        &copy; 2024 NAH.SH | Impressum | Datenschutz
-    </footer>
+    <script>
+        const loginForm = document.getElementById('login-form');
+        const registrationForm = document.getElementById('registration-form');
+        const formTitle = document.getElementById('form-title');
 
-    <script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
+        function switchToRegistration() {
+            loginForm.style.display = 'none';
+            registrationForm.style.display = 'block';
+            formTitle.innerText = 'Registrieren';
+        }
+
+        function switchToLogin() {
+            registrationForm.style.display = 'none';
+            loginForm.style.display = 'block';
+            formTitle.innerText = 'Login';
+        }
+    </script>
 </body>
 </html>
