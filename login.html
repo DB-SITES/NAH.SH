@@ -5,148 +5,90 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <meta name="referrer" content="no-referrer">
-    <title>NAH.SH - Login</title>
+    <title>Login - NAH.SH</title>
     <style>
-        @font-face {
-            font-family: 'Avenir';
-            src: url('https://fonts.googleapis.com/css2?family=Avenir:wght@700;600;500&display=swap');
-        }
-
         body {
             margin: 0;
             font-family: 'Avenir', sans-serif;
             background-color: #F4F4F4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            color: #4A5C66; /* Pantone 533 */
+            color: #4A5C66;
         }
 
-        .auth-container {
+        .container {
+            max-width: 400px;
+            margin: 40px auto;
+            padding: 20px;
             background-color: white;
-            padding: 30px;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 400px;
-            box-sizing: border-box;
         }
 
-        .auth-container h2 {
-            margin-top: 0;
+        h2 {
             text-align: center;
             font-weight: 700;
             color: #006F6A; /* Pantone 320 */
         }
 
-        .auth-container form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .auth-container form input,
-        .auth-container form button {
-            padding: 12px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        .auth-container form button {
-            background-color: #006F6A; /* Pantone 320 */
-            color: white;
-            cursor: pointer;
+        label {
+            display: block;
+            margin-bottom: 10px;
             font-weight: 600;
         }
 
-        .switch-auth {
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #CCC;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #006F6A; /* Pantone 320 */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+        }
+
+        .footer {
             text-align: center;
             margin-top: 20px;
+            font-size: 0.9rem;
         }
 
-        .switch-auth a {
-            text-decoration: none;
-            color: #4A5C66; /* Pantone 533 */
-            font-weight: 500;
-        }
-
-        /* Responsive Styles */
-        @media (max-width: 768px) {
-            .auth-container {
-                padding: 20px;
-                width: 90%;
-            }
-        }
-
+        /* Responsives Layout */
         @media (max-width: 480px) {
-            .auth-container form input,
-            .auth-container form button {
-                font-size: 14px;
+            .container {
+                width: 90%;
+                padding: 15px;
+            }
+
+            h2 {
+                font-size: 1.5rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="auth-container">
-        <h2 id="auth-title">Login</h2>
-        <form id="login-form" onsubmit="handleLogin(event)">
-            <input type="text" id="login-username" placeholder="Benutzername" required>
-            <input type="password" id="login-password" placeholder="Passwort" required>
-            <button type="submit">Einloggen</button>
-        </form>
-        <div class="switch-auth">
-            <p>Kein Konto? <a href="#" onclick="switchToRegister()">Jetzt registrieren</a></p>
-        </div>
+    <div class="container">
+        <h2>Login zu NAH.SH</h2>
+        <form method="POST" action="dashboard.html">
+            <label for="username">Benutzername:</label>
+            <input type="text" id="username" name="username" required>
 
-        <form id="register-form" onsubmit="handleRegister(event)" style="display: none;">
-            <input type="text" id="register-username" placeholder="Benutzername" required>
-            <input type="password" id="register-password" placeholder="Passwort" required>
-            <button type="submit">Registrieren</button>
+            <label for="password">Passwort:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Einloggen</button>
         </form>
     </div>
 
-    <script>
-        function handleLogin(event) {
-            event.preventDefault();
-            const username = document.getElementById("login-username").value;
-            const password = document.getElementById("login-password").value;
-            const storedPassword = localStorage.getItem(username);
-
-            if (storedPassword && storedPassword === password) {
-                localStorage.setItem("loggedInUser", username);
-                window.location.href = "index.html"; // Weiterleitung zur Hauptseite
-            } else {
-                alert("Ungültige Anmeldedaten!");
-            }
-        }
-
-        function handleRegister(event) {
-            event.preventDefault();
-            const username = document.getElementById("register-username").value;
-            const password = document.getElementById("register-password").value;
-
-            if (localStorage.getItem(username)) {
-                alert("Benutzername existiert bereits!");
-            } else {
-                localStorage.setItem(username, password);
-                alert("Registrierung erfolgreich! Du kannst dich jetzt einloggen.");
-                switchToLogin();
-            }
-        }
-
-        function switchToRegister() {
-            document.getElementById("auth-title").textContent = "Registrierung";
-            document.getElementById("login-form").style.display = "none";
-            document.getElementById("register-form").style.display = "block";
-        }
-
-        function switchToLogin() {
-            document.getElementById("auth-title").textContent = "Login";
-            document.getElementById("login-form").style.display = "block";
-            document.getElementById("register-form").style.display = "none";
-        }
-    </script>
+    <footer class="footer">
+        <p>&copy; 2024 NAH.SH | Impressum | Datenschutz</p>
+    </footer>
 </body>
 </html>
