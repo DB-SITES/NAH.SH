@@ -69,56 +69,24 @@
             margin-top: 20px;
         }
 
-        .sib-form {
-            text-align: center;
-            background-color: #EFF2F7;
-            padding: 20px;
-            border-radius: 5px;
-            margin-top: 20px;
-        }
-
-        .auth-container {
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            margin-top: 20px;
-        }
-
-        .auth-container h2 {
-            margin-top: 0;
-        }
-
-        .auth-container form {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .auth-container form input, .auth-container form button {
-            padding: 10px;
-            font-size: 16px;
-        }
-
-        .welcome {
+        .welcome-message {
             text-align: center;
             font-size: 20px;
+            margin: 20px 0;
         }
 
         .logout-btn {
-            margin-top: 10px;
             background-color: #007bff;
             color: white;
-            border: none;
             padding: 10px 15px;
             cursor: pointer;
+            border: none;
         }
     </style>
-    <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
 </head>
 <body>
     <header>
-        <img src="nahsh-logo.svg" alt="NAH.SH Logo">
+        <img src="https://via.placeholder.com/150x50?text=NAH.SH" alt="NAH.SH Logo">
         <nav>
             <a href="#themen">Themen</a>
             <a href="#fahrplan">Fahrplan</a>
@@ -133,6 +101,12 @@
     </div>
 
     <div class="container">
+        <!-- Willkommensnachricht für eingeloggte Benutzer -->
+        <div id="welcome-message" class="welcome-message" style="display: none;">
+            <p>Willkommen, <span id="user-name"></span>!</p>
+            <button class="logout-btn" onclick="logout()">Abmelden</button>
+        </div>
+
         <!-- Streckenfinder -->
         <section class="streckenfinder">
             <h2>Finde deine Strecke:</h2>
@@ -141,112 +115,25 @@
                  data-hfs-widget-tp="true" 
                  data-hfs-widget-tp-autosearch="true"></div>
         </section>
-
-        <!-- Newsletter -->
-        <div class="sib-form">
-            <div id="sib-form-container">
-                <form id="sib-form" method="POST" action="https://eee3d9d7.sibforms.com/serve/MUIFAJBp4mvAhfwnOrntf7EWltNQtM-PLM_24uLtFSDJEO2qK58L3yVNlMDMFxJMo0ZzCksCQXatlUYU4KQmz1E5hbY9XB8gM06RXRk5_-Xog3_GgB8qEnAeiZIfUNAXJdHCtGO3PdNczGkaqRwLZGqRQ_wPTNeBw-XlCcfQNXCEtJ0KNgCaur18uw7ozayGJnU6uIC_M_IeXgJI" data-type="subscription">
-                    <h2>Newsletter</h2>
-                    <p>Subscribe to our newsletter and stay updated.</p>
-                    <label for="EMAIL">E-Mail-Adresse</label>
-                    <input type="email" id="EMAIL" name="EMAIL" placeholder="E-Mail eingeben" required>
-                    <label>
-                        <input type="checkbox" id="OPT_IN" name="OPT_IN">
-                        Ich bin kein Roboter
-                    </label>
-                    <button type="submit">Abonnieren</button>
-                </form>
-            </div>
-        </div>
-
-        <!-- Login / Registrierung -->
-        <div class="auth-container">
-            <h2 id="auth-title">Login</h2>
-            <div id="auth-forms">
-                <form id="login-form" onsubmit="handleLogin(event)">
-                    <input type="text" id="login-username" placeholder="Benutzername" required>
-                    <input type="password" id="login-password" placeholder="Passwort" required>
-                    <button type="submit">Einloggen</button>
-                    <p>Kein Konto? <a href="#" onclick="switchToRegister()">Jetzt registrieren</a></p>
-                </form>
-
-                <form id="register-form" onsubmit="handleRegister(event)" style="display: none;">
-                    <input type="text" id="register-username" placeholder="Benutzername" required>
-                    <input type="password" id="register-password" placeholder="Passwort" required>
-                    <button type="submit">Registrieren</button>
-                    <p>Bereits registriert? <a href="#" onclick="switchToLogin()">Jetzt einloggen</a></p>
-                </form>
-            </div>
-            <div id="welcome-message" class="welcome" style="display: none;">
-                <p>Willkommen, <span id="user-name"></span>!</p>
-                <button class="logout-btn" onclick="logout()">Abmelden</button>
-            </div>
-        </div>
     </div>
 
     <footer class="footer">
         &copy; 2024 NAH.SH | Impressum | Datenschutz
     </footer>
 
-    <script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
     <script>
-        // Check user session
+        // Prüfen, ob der Benutzer eingeloggt ist
         window.onload = function() {
             const loggedInUser = localStorage.getItem("loggedInUser");
             if (loggedInUser) {
-                showWelcomeMessage(loggedInUser);
+                document.getElementById("welcome-message").style.display = "block";
+                document.getElementById("user-name").textContent = loggedInUser;
             }
         };
-
-        function handleLogin(event) {
-            event.preventDefault();
-            const username = document.getElementById("login-username").value;
-            const password = document.getElementById("login-password").value;
-
-            const storedPassword = localStorage.getItem(username);
-            if (storedPassword && storedPassword === password) {
-                localStorage.setItem("loggedInUser", username);
-                showWelcomeMessage(username);
-            } else {
-                alert("Ungültige Anmeldedaten!");
-            }
-        }
-
-        function handleRegister(event) {
-            event.preventDefault();
-            const username = document.getElementById("register-username").value;
-            const password = document.getElementById("register-password").value;
-
-            if (localStorage.getItem(username)) {
-                alert("Benutzername existiert bereits!");
-            } else {
-                localStorage.setItem(username, password);
-                alert("Registrierung erfolgreich!");
-                switchToLogin();
-            }
-        }
 
         function logout() {
             localStorage.removeItem("loggedInUser");
             location.reload();
-        }
-
-        function showWelcomeMessage(username) {
-            document.getElementById("auth-forms").style.display = "none";
-            document.getElementById("welcome-message").style.display = "block";
-            document.getElementById("user-name").textContent = username;
-        }
-
-        function switchToRegister() {
-            document.getElementById("login-form").style.display = "none";
-            document.getElementById("register-form").style.display = "block";
-            document.getElementById("auth-title").textContent = "Registrieren";
-        }
-
-        function switchToLogin() {
-            document.getElementById("register-form").style.display = "none";
-            document.getElementById("login-form").style.display = "block";
-            document.getElementById("auth-title").textContent = "Login";
         }
     </script>
 </body>
