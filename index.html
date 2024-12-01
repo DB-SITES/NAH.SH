@@ -7,6 +7,7 @@
     <meta name="referrer" content="no-referrer">
     <title>NAH.SH - Fahrplanauskunft</title>
     <style>
+        /* Verwenden von Pantone Farben und Schriftarten */
         @font-face {
             font-family: 'Avenir';
             src: url('https://fonts.googleapis.com/css2?family=Avenir:wght@700;600;500&display=swap');
@@ -79,7 +80,24 @@
             margin-top: 40px;
         }
 
-        /* Responsive Styles */
+        /* Responsives iFrame */
+        .responsive-iframe-container {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* Verhältnis 16:9 */
+            height: 0;
+            overflow: hidden;
+        }
+
+        .responsive-iframe-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Responsives Layout */
         @media (max-width: 768px) {
             header {
                 flex-direction: column;
@@ -117,6 +135,9 @@
     </style>
 </head>
 <body>
+    <!-- Script für das Widget -->
+    <script src="https://nah.sh.hafas.de/webapp//staticfiles/hafas-widget-core.1.0.0.js?language=de_DE&L=vs_nahsh"></script>
+
     <header>
         <img src="https://via.placeholder.com/150x50?text=NAH.SH" alt="NAH.SH Logo">
         <nav>
@@ -135,7 +156,10 @@
     <div class="container">
         <section class="streckenfinder">
             <h2>Finde deine Strecke:</h2>
-            <div data-hfs-widget="true" data-hfs-widget-cfg-colorscheme="light" data-hfs-widget-tp="true" data-hfs-widget-tp-autosearch="true"></div>
+            <!-- Widget zum Streckenfinder -->
+            <div data-hfs-widget="true" 
+                 data-hfs-widget-cfg-colorscheme="light" 
+                 data-hfs-widget-tp="true"></div>
         </section>
     </div>
 
