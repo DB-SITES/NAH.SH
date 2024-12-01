@@ -5,22 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <meta name="referrer" content="no-referrer">
-    <title>NAH.SH - Login / Registrierung</title>
+    <title>NAH.SH - Login</title>
     <style>
+        @font-face {
+            font-family: 'Avenir';
+            src: url('https://fonts.googleapis.com/css2?family=Avenir:wght@700;600;500&display=swap');
+        }
+
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
+            font-family: 'Avenir', sans-serif;
+            background-color: #F4F4F4;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f4f4f4;
+            color: #4A5C66; /* Pantone 533 */
         }
 
         .auth-container {
             background-color: white;
-            padding: 20px;
-            border-radius: 5px;
+            padding: 30px;
+            border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             width: 100%;
             max-width: 400px;
@@ -30,12 +36,14 @@
         .auth-container h2 {
             margin-top: 0;
             text-align: center;
+            font-weight: 700;
+            color: #006F6A; /* Pantone 320 */
         }
 
         .auth-container form {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 15px;
         }
 
         .auth-container form input,
@@ -47,9 +55,10 @@
         }
 
         .auth-container form button {
-            background-color: #007bff;
+            background-color: #006F6A; /* Pantone 320 */
             color: white;
             cursor: pointer;
+            font-weight: 600;
         }
 
         .switch-auth {
@@ -59,25 +68,22 @@
 
         .switch-auth a {
             text-decoration: none;
-            color: #007bff;
+            color: #4A5C66; /* Pantone 533 */
+            font-weight: 500;
         }
 
         /* Responsive Styles */
-        @media (max-width: 600px) {
-            body {
-                height: auto;
-                padding: 10px;
-            }
-
+        @media (max-width: 768px) {
             .auth-container {
-                padding: 15px;
-                width: 100%;
+                padding: 20px;
+                width: 90%;
             }
+        }
 
+        @media (max-width: 480px) {
             .auth-container form input,
             .auth-container form button {
                 font-size: 14px;
-                padding: 10px;
             }
         }
     </style>
@@ -125,21 +131,21 @@
                 alert("Benutzername existiert bereits!");
             } else {
                 localStorage.setItem(username, password);
-                alert("Registrierung erfolgreich!");
+                alert("Registrierung erfolgreich! Du kannst dich jetzt einloggen.");
                 switchToLogin();
             }
         }
 
         function switchToRegister() {
+            document.getElementById("auth-title").textContent = "Registrierung";
             document.getElementById("login-form").style.display = "none";
             document.getElementById("register-form").style.display = "block";
-            document.getElementById("auth-title").innerText = "Registrierung";
         }
 
         function switchToLogin() {
+            document.getElementById("auth-title").textContent = "Login";
             document.getElementById("login-form").style.display = "block";
             document.getElementById("register-form").style.display = "none";
-            document.getElementById("auth-title").innerText = "Login";
         }
     </script>
 </body>
