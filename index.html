@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NAH.SH Streckenfinder</title>
+    <!-- HAFAS Widget Core -->
+    <script src="https://nah.sh.hafas.de/webapp//staticfiles/hafas-widget-core.1.0.0.js?language=de_DE&L=vs_nahsh"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #006938;
+            color: white;
+            padding: 1em 0;
+            text-align: center;
+        }
+        .container {
+            padding: 1em;
+        }
+        .streckenfinder {
+            margin: 2em 0;
+            padding: 1em;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>NAH.SH Streckenfinder</h1>
+    </header>
+    <div class="container">
+        <section class="streckenfinder">
+            <h2>Finde deine Strecke:</h2>
+            <div data-hfs-widget="true" 
+                 data-hfs-widget-cfg-colorscheme="light" 
+                 data-hfs-widget-tp="true" 
+                 data-hfs-widget-tp-autosearch="true"></div>
+        </section>
+    </div>
+</body>
+</html>
