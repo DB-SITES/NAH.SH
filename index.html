@@ -6,8 +6,6 @@
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <meta name="referrer" content="no-referrer">
     <title>NAH.SH - Fahrplanauskunft</title>
-    <!-- HAFAS Widget Core -->
-    <script src="https://nah.sh.hafas.de/webapp//staticfiles/hafas-widget-core.1.0.0.js?language=de_DE&L=vs_nahsh"></script>
     <style>
         body {
             margin: 0;
@@ -70,7 +68,22 @@
             padding: 10px;
             margin-top: 20px;
         }
+
+        /* Brevo Newsletter Form Styles */
+        @font-face {
+            font-display: block;
+            font-family: Roboto;
+            src: url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/7529907e9eaf8ebb5220c5f9850e3811.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/25c678feafdc175a70922a116c9be3e7.woff) format("woff");
+        }
+
+        .sib-form {
+            text-align: center;
+            background-color: #EFF2F7;
+            padding: 20px;
+            border-radius: 5px;
+        }
     </style>
+    <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
 </head>
 <body>
     <header>
@@ -96,10 +109,29 @@
                  data-hfs-widget-tp="true" 
                  data-hfs-widget-tp-autosearch="true"></div>
         </section>
+
+        <!-- Brevo Newsletter Form -->
+        <div class="sib-form">
+            <div id="sib-form-container">
+                <form id="sib-form" method="POST" action="https://eee3d9d7.sibforms.com/serve/MUIFAJBp4mvAhfwnOrntf7EWltNQtM-PLM_24uLtFSDJEO2qK58L3yVNlMDMFxJMo0ZzCksCQXatlUYU4KQmz1E5hbY9XB8gM06RXRk5_-Xog3_GgB8qEnAeiZIfUNAXJdHCtGO3PdNczGkaqRwLZGqRQ_wPTNeBw-XlCcfQNXCEtJ0KNgCaur18uw7ozayGJnU6uIC_M_IeXgJI" data-type="subscription">
+                    <h2>Newsletter</h2>
+                    <p>Subscribe to our newsletter and stay updated.</p>
+                    <label for="EMAIL">E-Mail-Adresse</label>
+                    <input type="email" id="EMAIL" name="EMAIL" placeholder="E-Mail eingeben" required>
+                    <label>
+                        <input type="checkbox" id="OPT_IN" name="OPT_IN">
+                        Ich bin kein Roboter
+                    </label>
+                    <button type="submit">Abonnieren</button>
+                </form>
+            </div>
+        </div>
     </div>
 
     <footer class="footer">
         &copy; 2024 NAH.SH | Impressum | Datenschutz
     </footer>
+
+    <script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
 </body>
 </html>
